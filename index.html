@@ -8,7 +8,6 @@
 </head>
 <body class="bg-gray-100 font-mono">
 
-
 <nav class="w-full bg-white shadow-md px-6 py-4 flex flex-col md:flex-row items-center justify-between">
     <div class="flex items-center space-x-3">
         <img src="b12/assets/logo.png" alt="Logo" class="h-12 w-12 object-contain">
@@ -37,7 +36,6 @@
     </div>
 </nav>
 
-
 <section class="w-full max-w-[1920px] h-[239px] mx-auto bg-gradient-to-r from-green-900 to-green-300 flex flex-col items-center justify-center py-[60px] px-6">
     <div class="mb-2">
         <img src="b12/assets/logo.png" alt="Hero Logo" class="h-20 w-20 object-contain">
@@ -49,7 +47,6 @@
         Government Emergency Services At Your Fingertips
     </p>
 </section>
-
 
 <section class="w-full max-w-[1800px] mx-auto flex flex-col md:flex-row gap-6 px-6 py-8">
     <div id="cards-section" class="w-full md:w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
@@ -70,7 +67,7 @@
 const cardsSection = document.getElementById('cards-section');
 const historyItems = document.getElementById('history-items');
 
-let heartCount = 100;
+let heartCount = 1;
 let coinCount = 100;
 let copyCount = 2;
 
@@ -89,7 +86,6 @@ const cardsData = [
     { name: "Fire Service Helpline", number: "799", icon: "b12/assets/ambulance.png", category: "Govt." },
     { name: "Brac Safety Listens", number: "991", icon: "b12/assets/brac.png", category: "Help" }
 ];
-
 
 cardsData.forEach(card => {
     const cardDiv = document.createElement('div');
@@ -116,24 +112,22 @@ cardsData.forEach(card => {
             </button>
         </div>
     `;
-
     cardsSection.appendChild(cardDiv);
 });
-
 
 cardsSection.addEventListener('click', e => {
     const card = e.target.closest('.card-item');
     if (!card) return;
 
-    
+    // Heart button
     if (e.target.classList.contains('heart-btn')) {
         heartCount++;
         heartDisplay.textContent = heartCount;
     }
 
-    
+    // Call button
     if (e.target.closest('.call-btn')) {
-        const serviceName = card.querySelector('h2').textContent;
+        const serviceName = card.querySelector('h1').textContent; // fixed (was h2)
         const serviceNumber = card.querySelector('p.text-blue-600').textContent;
 
         if (coinCount < 20) {
@@ -159,7 +153,7 @@ cardsSection.addEventListener('click', e => {
         historyItems.prepend(div);
     }
 
-   
+    // Copy button
     if (e.target.closest('.copy-btn')) {
         const textToCopy = card.querySelector('p.text-blue-600').textContent;
         navigator.clipboard.writeText(textToCopy).then(() => {
@@ -170,7 +164,7 @@ cardsSection.addEventListener('click', e => {
     }
 });
 
-
+// Clear history
 document.getElementById('clear-history').addEventListener('click', () => {
     historyItems.innerHTML = '';
 });
