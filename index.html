@@ -22,7 +22,7 @@
     <div class="flex items-center space-x-3 mt-3 md:mt-0">
         <div class="flex items-center space-x-1 bg-blue-100 px-3 py-1 rounded-full cursor-pointer hover:bg-blue-300 transition-colors duration-200">
             <img src="b12/assets/heart.png" alt="Heart" class="h-6 w-6">
-            <span id="navbar-heart-count" class="font-medium text-gray-700">1</span>
+            <span id="navbar-heart-count" class="font-medium text-gray-700">0</span>
         </div>
 
         <div class="flex items-center space-x-1 bg-blue-100 px-3 py-1 rounded-full cursor-pointer hover:bg-blue-300 transition-colors duration-200">
@@ -31,7 +31,7 @@
         </div>
 
         <button id="navbar-copy-btn" class="bg-green-500 text-white px-3 py-1 rounded-full font-medium hover:bg-green-600">
-            2 copy
+            0 copy
         </button>
     </div>
 </nav>
@@ -67,9 +67,9 @@
 const cardsSection = document.getElementById('cards-section');
 const historyItems = document.getElementById('history-items');
 
-let heartCount = 1;
+let heartCount = 0;
 let coinCount = 100;
-let copyCount = 2;
+let copyCount = 0;
 
 const heartDisplay = document.getElementById('navbar-heart-count');
 const coinDisplay = document.getElementById('navbar-coin-count');
@@ -119,15 +119,15 @@ cardsSection.addEventListener('click', e => {
     const card = e.target.closest('.card-item');
     if (!card) return;
 
-    // Heart button
+   
     if (e.target.classList.contains('heart-btn')) {
         heartCount++;
         heartDisplay.textContent = heartCount;
     }
 
-    // Call button
+  
     if (e.target.closest('.call-btn')) {
-        const serviceName = card.querySelector('h1').textContent; // fixed (was h2)
+        const serviceName = card.querySelector('h1').textContent; 
         const serviceNumber = card.querySelector('p.text-blue-600').textContent;
 
         if (coinCount < 20) {
@@ -153,7 +153,7 @@ cardsSection.addEventListener('click', e => {
         historyItems.prepend(div);
     }
 
-    // Copy button
+    
     if (e.target.closest('.copy-btn')) {
         const textToCopy = card.querySelector('p.text-blue-600').textContent;
         navigator.clipboard.writeText(textToCopy).then(() => {
@@ -164,7 +164,7 @@ cardsSection.addEventListener('click', e => {
     }
 });
 
-// Clear history
+
 document.getElementById('clear-history').addEventListener('click', () => {
     historyItems.innerHTML = '';
 });
