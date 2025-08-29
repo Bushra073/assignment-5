@@ -79,15 +79,15 @@ const coinDisplay = document.getElementById('navbar-coin-count');
 const navbarCopyBtn = document.getElementById('navbar-copy-btn');
 
 const cardsData = [
-    { name: "National Emergency Number", number: "999", icon: "b12/assets/police.png" },
-    { name: "Ambulance Service Number", number: "199", icon: "b12/assets/ambulance.png" },
-    { name: "Women and Child Helpline", number: "666", icon: "b12/assets/police.png" },
-    { name: "Anti Corruption Helpline", number: "599", icon: "b12/assets/fire-service.png" },
-    { name: "Bangladesh Railway", number: "299", icon: "b12/assets/police.png" },
-    { name: "Police Helpline Number", number: "100", icon: "b12/assets/police.png" },
-    { name: "Electricity Helpline Number", number: "499", icon: "b12/assets/fire-service.png" },
-    { name: "Fire Service Helpline", number: "799", icon: "b12/assets/ambulance.png" },
-    { name: "Brac Safety Listens", number: "991", icon: "b12/assets/brac.png" }
+    { name: "National Emergency Number", number: "999", icon: "b12/assets/police.png", category: "All" },
+    { name: "Ambulance Service Number", number: "199", icon: "b12/assets/ambulance.png", category: "Health" },
+    { name: "Women and Child Helpline", number: "666", icon: "b12/assets/police.png", category: "Help" },
+    { name: "Anti Corruption Helpline", number: "599", icon: "b12/assets/fire-service.png", category: "Govt." },
+    { name: "Bangladesh Railway", number: "299", icon: "b12/assets/police.png", category: "Govt." },
+    { name: "Police Helpline Number", number: "100", icon: "b12/assets/police.png", category: "Police" },
+    { name: "Electricity Helpline Number", number: "499", icon: "b12/assets/fire-service.png", category: "Govt." },
+    { name: "Fire Service Helpline", number: "799", icon: "b12/assets/ambulance.png", category: "Govt." },
+    { name: "Brac Safety Listens", number: "991", icon: "b12/assets/brac.png", category: "Help" }
 ];
 
 // Generate cards
@@ -105,6 +105,8 @@ cardsData.forEach(card => {
             <p class="text-gray-500 text-sm">Hotline Number</p>
             <p class="font-bold text-xl text-blue-600 mt-1">${card.number}</p>
         </div>
+        <!-- Category Badge -->
+        <span class="bg-gray-200 text-gray-800 text-xs px-2 py-1 rounded-sm mt-2 inline-block">${card.category}</span>
         <div class="flex justify-between mt-4">
             <button class="flex items-center gap-1 px-3 py-1 border border-gray-400 rounded-md hover:bg-gray-100 copy-btn">
                 <img src="b12/assets/copy-svgrepo-com.svg" alt="Copy" class="h-4 w-4"> Copy
